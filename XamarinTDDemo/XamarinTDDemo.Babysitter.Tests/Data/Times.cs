@@ -12,7 +12,7 @@ namespace XamarinTDDemo.Babysitter.Tests.Data
         {
             get
             {
-                return true;
+                return Start >= DateTime.Parse("5:00 pm");
             }
         }
     }
