@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace XamarinTDDemo.Babysitter.Tests.Data
+namespace XamarinTDDemo.Babysitter
 {
     public class Times
     {
-        public DateTime BedTime { get; internal set; }
-        public DateTime End { get; internal set; }
-        public DateTime Start { get; internal set; }
+        public DateTime BedTime { get; set; }
+        public DateTime End { get; set; }
+        public DateTime Start { get; set; }
 
         public bool IsValid
         {

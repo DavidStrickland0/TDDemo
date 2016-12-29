@@ -26,6 +26,11 @@ namespace XamarinTDDemo.Babysitter
             return charge;
         }
 
+        public static decimal Calulate(IEnumerable<HourlyRate> rates, Times times)
+        {
+            throw new NotImplementedException();
+        }
+
         private static decimal chargeHighestValueHour(IEnumerable<HourlyRate> rates, IEnumerable<Timing> remainingTimings)
         {
             //Concat the two Collections so we can work with Time and rate together
