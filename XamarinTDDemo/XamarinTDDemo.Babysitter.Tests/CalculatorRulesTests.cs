@@ -29,5 +29,26 @@ namespace XamarinTDDemo.Babysitter.Tests
             decimal actual = Calculator.Calulate(rates, timings);
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void cant_be_paid_for_more_hours_then_they_worked()
+        {
+            //Setup
+            Timings timings = Data.Defaults.Timings();
+            Rates rates = Data.Defaults.Rates();
+            decimal expected =
+                timings.PreBedtime.Hours * rates.PreBedtime +
+                timings.BedtimeToMidnight.Hours * rates.BedtimeToMidnight +
+                timings.MidnightToEndOfJob.Hours * rates.MidnightToEndOfJob;
+
+            //Modify
+            timings.PreBedtime = timings.PreBedtime.Subtract(new TimeSpan(0, 15, 0));
+            timings.BedtimeToMidnight = timings.BedtimeToMidnight.Add(new TimeSpan(0, 15, 0));
+
+            //Assert
+            decimal actual = Calculator.Calulate(rates, timings);
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
