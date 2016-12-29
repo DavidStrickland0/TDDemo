@@ -11,7 +11,13 @@ namespace XamarinTDDemo.Babysitter
 
         public static decimal Calulate(Babysitter.Rates rates, Babysitter.Timings timings)
         {
-            return 0;
+            decimal charge =0 ;
+
+            charge = charge + rates.PreBedtime * timings.PreBedtime.Hours  ;
+            charge = charge + rates.BedtimeToMidnight * timings.BedtimeToMidnight.Hours;
+            charge = charge + rates.MidnightToEndOfJob * timings.MidnightToEndOfJob.Hours;
+
+            return charge;
         }
     }
 }

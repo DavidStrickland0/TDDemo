@@ -9,6 +9,7 @@ namespace XamarinTDDemo.Babysitter.Tests
         [TestMethod]
         public void Story_Test_calculate_my_nightly_charge()
         {
+
             //Starts at 5 pm
             int hoursBeforeBedtime = 4;
             //Bedtime 9 pm
@@ -34,12 +35,15 @@ namespace XamarinTDDemo.Babysitter.Tests
                 BedtimeToMidnight = rateBedTimeToMidnight,
                 MidnightToEndOfJob = rateMidnightToEndOfJob
             };
-            decimal charge = Calculator.Calulate(rates, timings);
-            Assert.IsTrue(charge ==
+            decimal actual = Calculator.Calulate(rates, timings);
+
+            decimal expected = 
                 hoursBeforeBedtime * rateForPreBedtime +
-                hoursAfterBedtime * rateBedTimeToMidnight +
-                hoursToEndOfJob * rateMidnightToEndOfJob
-                );
+                hoursAfterBedtime  * rateBedTimeToMidnight +
+                hoursToEndOfJob    * rateMidnightToEndOfJob;
+
+
+            Assert.AreEqual(expected , actual);
         }
     }
 }
