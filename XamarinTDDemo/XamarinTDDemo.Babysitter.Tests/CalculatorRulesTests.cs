@@ -68,6 +68,19 @@ namespace XamarinTDDemo.Babysitter.Tests
             Assert.IsFalse(times.IsValid);
         }
 
+        [TestMethod]
+        public void leaves_no_later_than_4_00AM()
+        {
+            //Setup
+            var times = Data.Defaults.Times();
+            var rates = Data.Defaults.Rates();
+            decimal expected = Data.Defaults.ExpectedCharge;
 
+            //Modify
+            times.End = DateTime.Parse("5:00 am");
+
+            //Assert
+            Assert.IsFalse(times.IsValid);
+        }
     }
 }
