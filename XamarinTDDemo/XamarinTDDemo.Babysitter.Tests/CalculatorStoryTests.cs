@@ -16,7 +16,7 @@ namespace XamarinTDDemo.Babysitter.Tests
             decimal expected = Data.Defaults.ExpectedCharge;
 
             //Assert
-            decimal actual = Calculator.Calulate(rates, timings);
+            decimal actual = Calculator.Calculate(rates, timings);
             Assert.AreEqual(expected, actual);
         }
 

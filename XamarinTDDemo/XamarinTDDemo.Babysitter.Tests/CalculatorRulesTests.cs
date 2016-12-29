@@ -26,7 +26,7 @@ namespace XamarinTDDemo.Babysitter.Tests
             timingToChange.Time = timingToChange.Time.Subtract(new TimeSpan(0, 15, 0));
 
             //Assert
-            decimal actual = Calculator.Calulate(rates, timings);
+            decimal actual = Calculator.Calculate(rates, timings);
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace XamarinTDDemo.Babysitter.Tests
             bedToMidnightTimeing.Time = bedToMidnightTimeing.Time.Subtract(new TimeSpan(0, 15, 0));
 
             //Assert
-            decimal actual = Calculator.Calulate(rates, timings);
+            decimal actual = Calculator.Calculate(rates, timings);
             Assert.AreEqual(expected, actual);
         }
 

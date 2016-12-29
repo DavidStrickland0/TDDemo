@@ -9,7 +9,7 @@ namespace XamarinTDDemo.Babysitter
     public static class Calculator
     {
 
-        public static decimal Calulate(IEnumerable<HourlyRate> rates, IEnumerable<Timing> timings)
+        public static decimal Calculate(IEnumerable<HourlyRate> rates, IEnumerable<Timing> timings)
         {
             decimal charge = 0;
 
@@ -26,9 +26,58 @@ namespace XamarinTDDemo.Babysitter
             return charge;
         }
 
-        public static decimal Calulate(IEnumerable<HourlyRate> rates, Times times)
+        public static decimal Calculate(IEnumerable<HourlyRate> rates, Times times)
         {
-            throw new NotImplementedException();
+            return Calculate(rates, toTimings(times));
+        }
+
+        private static IEnumerable<Timing> toTimings(Times times)
+        {
+            var timings = new List<Timing>();
+            timings.Add(new Timing() { Catagory = PricingCatagories.BedtimeToMidnight,
+                Time = extractTiming(PricingCatagories.BedtimeToMidnight, times)
+            });
+            timings.Add(new Timing()
+            {
+                Catagory = PricingCatagories.MidnightToEndOfJob,
+                Time = extractTiming(PricingCatagories.MidnightToEndOfJob, times)
+            });
+            timings.Add(new Timing()
+            {
+                Catagory = PricingCatagories.PreBedTime,
+                Time = extractTiming(PricingCatagories.PreBedTime, times)
+            });
+            return timings;
+        }
+
+        /// <summary>
+        /// Extracts the given time catagory from the list of times. 
+        /// </summary>
+        /// <param name="catagory"></param>
+        /// <param name="times"></param>
+        /// <returns></returns>
+        private static TimeSpan extractTiming(PricingCatagories catagory, Times times)
+        {
+            var result = TimeSpan.Zero;
+
+            switch (catagory)
+            {
+                case PricingCatagories.PreBedTime:
+                    if(times.BedTime>CalculatorSettings.StartOfWorkDay)
+                        result = times.BedTime.Subtract(times.Start);
+                    if (times.BedTime == CalculatorSettings.StartOfDay)
+                        result = CalculatorSettings.EndOfDay.Subtract(times.Start);
+                    break;
+                case PricingCatagories.BedtimeToMidnight:
+                    if (times.BedTime > CalculatorSettings.StartOfWorkDay)
+                        result = CalculatorSettings.EndOfDay.Subtract(times.BedTime);
+                    break;
+                case PricingCatagories.MidnightToEndOfJob:
+                    if (times.End <= CalculatorSettings.EndOfWorkDay)
+                        result = times.End.Subtract(CalculatorSettings.StartOfDay);
+                    break;
+            };
+            return result;
         }
 
         private static decimal chargeHighestValueHour(IEnumerable<HourlyRate> rates, IEnumerable<Timing> remainingTimings)
