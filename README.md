@@ -53,6 +53,7 @@ We'll assume Option#2 as common sense would tend to dictate thats the answer but
 
 ## Issue 2 (Came up while coding) "gets paid $12/hour from start-time to bedtime"
 What happens if the kids are real brats and dont go to bed till 1 am?
+
 *Option 1 Sitter makes pre bedtime rate Untill they go to bed then shifts to after midnight.
 
 *Option 2 Sitter makes after midnight rate reguardless.
