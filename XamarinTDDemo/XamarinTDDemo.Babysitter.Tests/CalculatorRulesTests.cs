@@ -53,5 +53,21 @@ namespace XamarinTDDemo.Babysitter.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void starts_no_earlier_than_5_00PM()
+        {
+            //Setup
+            var times = Data.Defaults.Times();
+            var rates = Data.Defaults.Rates();
+            decimal expected = Data.Defaults.ExpectedCharge;
+
+            //Modify
+            times.Start = DateTime.Parse("4:00 pm");
+
+            //Assert
+            Assert.IsFalse(times.IsValid);
+        }
+
+
     }
 }

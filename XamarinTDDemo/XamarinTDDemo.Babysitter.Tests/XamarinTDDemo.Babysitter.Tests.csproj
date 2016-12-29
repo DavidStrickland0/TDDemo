@@ -55,6 +55,7 @@
     <Compile Include="CalculatorRulesTests.cs" />
     <Compile Include="CalculatorStoryTests.cs" />
     <Compile Include="Data\Defaults.cs" />
+    <Compile Include="Data\Times.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

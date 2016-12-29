@@ -66,6 +66,13 @@ namespace XamarinTDDemo.Babysitter.Tests.Data
             };
             return rates;
         }
-
+        public static Times Times()
+        {
+            Times times = new Times();
+            times.Start = DateTime.Parse("5:00 pm");
+            times.End = DateTime.Parse("4:00 am");
+            times.BedTime = DateTime.Parse("9:00 pm");
+            return times;
+        }
     }
 }
