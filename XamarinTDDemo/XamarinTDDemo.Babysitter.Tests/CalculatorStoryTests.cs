@@ -10,13 +10,10 @@ namespace XamarinTDDemo.Babysitter.Tests
         public void Story_Test_calculate_my_nightly_charge()
         {
             //Setup
-            Timings timings = Data.Defaults.Timings();
-            Rates rates = Data.Defaults.Rates();
+            var timings = Data.Defaults.Timings();
+            var rates = Data.Defaults.Rates();
 
-            decimal expected =
-                timings.PreBedtime.Hours * rates.PreBedtime +
-                timings.BedtimeToMidnight.Hours * rates.BedtimeToMidnight +
-                timings.MidnightToEndOfJob.Hours * rates.MidnightToEndOfJob;
+            decimal expected = Data.Defaults.ExpectedCharge;
 
             //Assert
             decimal actual = Calculator.Calulate(rates, timings);

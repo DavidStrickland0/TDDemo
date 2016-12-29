@@ -8,7 +8,9 @@ namespace XamarinTDDemo.Babysitter.Tests.Data
 {
     public static class Defaults
     {
-        public static Timings Timings()
+
+        public static int ExpectedCharge = 136; 
+        public static IEnumerable<Timing> Timings()
         {
             //Starts at 5 pm
             int hoursBeforeBedtime = 4;
@@ -16,26 +18,51 @@ namespace XamarinTDDemo.Babysitter.Tests.Data
             int hoursAfterBedtime = 3;
             //Job ends at 4 am
             int hoursToEndOfJob = 4;
-            var timings = new Timings()
+            var timings = new List<Timing>()
             {
+                new Timing()
+                {
+                    Catagory=PricingCatagories.PreBedTime,
+                    Time= new TimeSpan(hoursBeforeBedtime,0,0)
+                },
+                new Timing()
+                {
+                    Catagory=PricingCatagories.BedtimeToMidnight,
+                    Time= new TimeSpan(hoursAfterBedtime,0,0)
+                },
+                new Timing()
+                {
+                    Catagory=PricingCatagories.MidnightToEndOfJob,
+                    Time= new TimeSpan(hoursToEndOfJob,0,0)
+                },
 
-                PreBedtime = new TimeSpan(hoursBeforeBedtime, 0, 0),
-                BedtimeToMidnight = new TimeSpan(hoursAfterBedtime, 0, 0),
-                MidnightToEndOfJob = new TimeSpan(hoursToEndOfJob, 0, 0)
             };
             return timings;
         }
 
-        public static Rates Rates()
+        public static IEnumerable<HourlyRate> Rates()
         {
             int rateForPreBedtime = 12;
             int rateBedTimeToMidnight = 8;
             int rateMidnightToEndOfJob = 16;
-            var rates = new Rates()
+            var rates = new List<HourlyRate>()
             {
-                PreBedtime = rateForPreBedtime,
-                BedtimeToMidnight = rateBedTimeToMidnight,
-                MidnightToEndOfJob = rateMidnightToEndOfJob
+                new HourlyRate()
+                {
+                    Catagory = PricingCatagories.PreBedTime,
+                    Rate = rateForPreBedtime
+                },
+                new HourlyRate()
+                {
+                    Catagory = PricingCatagories.BedtimeToMidnight,
+                    Rate = rateBedTimeToMidnight
+                },
+                new HourlyRate()
+                {
+                    Catagory = PricingCatagories.MidnightToEndOfJob,
+                    Rate = rateMidnightToEndOfJob
+                }
+
             };
             return rates;
         }
