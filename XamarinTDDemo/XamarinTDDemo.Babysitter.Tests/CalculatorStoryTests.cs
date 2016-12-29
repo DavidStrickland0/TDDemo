@@ -9,41 +9,19 @@ namespace XamarinTDDemo.Babysitter.Tests
         [TestMethod]
         public void Story_Test_calculate_my_nightly_charge()
         {
+            Timings timings = Data.Defaults.Timings();
+            Rates rates = Data.Defaults.Rates();
 
-            //Starts at 5 pm
-            int hoursBeforeBedtime = 4;
-            //Bedtime 9 pm
-            int hoursAfterBedtime = 3;
-            //Job ends at 4 am
-            int hoursToEndOfJob = 4;
-
-            int rateForPreBedtime = 12;
-            int rateBedTimeToMidnight = 8;
-            int rateMidnightToEndOfJob = 16;
-
-
-            var timings = new Timings()
-            {
-
-                PreBedtime = new TimeSpan(hoursBeforeBedtime, 0, 0),
-                BedtimeToMidnight = new TimeSpan(hoursAfterBedtime, 0, 0),
-                MidnightToEndOfJob = new TimeSpan(hoursToEndOfJob, 0, 0)
-            };
-            var rates = new Rates()
-            {
-                PreBedtime = rateForPreBedtime,
-                BedtimeToMidnight = rateBedTimeToMidnight,
-                MidnightToEndOfJob = rateMidnightToEndOfJob
-            };
             decimal actual = Calculator.Calulate(rates, timings);
 
-            decimal expected = 
-                hoursBeforeBedtime * rateForPreBedtime +
-                hoursAfterBedtime  * rateBedTimeToMidnight +
-                hoursToEndOfJob    * rateMidnightToEndOfJob;
+            decimal expected =
+                timings.PreBedtime.Hours * rates.PreBedtime +
+                timings.BedtimeToMidnight.Hours * rates.BedtimeToMidnight +
+                timings.MidnightToEndOfJob.Hours * rates.MidnightToEndOfJob;
 
 
-            Assert.AreEqual(expected , actual);
+            Assert.AreEqual(expected, actual);
         }
+
     }
 }

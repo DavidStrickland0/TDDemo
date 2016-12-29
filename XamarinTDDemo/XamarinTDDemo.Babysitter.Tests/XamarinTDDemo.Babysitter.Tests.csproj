@@ -52,8 +52,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CalculatorRulesTests.cs" />
     <Compile Include="CalculatorStoryTests.cs" />
-    <Compile Include="CalculatorTests.cs" />
+    <Compile Include="Data\Defaults.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
