@@ -95,21 +95,5 @@ namespace XamarinTDDemo.Babysitter
             timingToChange.Time = timingToChange.Time.Subtract(new TimeSpan(1, 0, 0));
             return hourToCharge.Rate;
         }
-
-
-        private static TimeSpan ToFullHours(this TimeSpan timespan)
-        {
-            if (timespan.Milliseconds > 0)
-                timespan = timespan.Subtract(new TimeSpan(0, 0, 0, timespan.Milliseconds));
-                timespan = timespan.Add(new TimeSpan(0, 0, 1));
-            if (timespan.Seconds > 0)
-                timespan = timespan.Subtract(new TimeSpan(0, 0, timespan.Seconds, 0));
-                timespan = timespan.Add(new TimeSpan(0, 1, 0));
-            if (timespan.Minutes > 0)
-                timespan = timespan.Subtract(new TimeSpan(0, timespan.Minutes, 0, 0));
-                timespan = timespan.Add(new TimeSpan(1, 0, 0));
-            return timespan;
-        }
-
     }
 }
