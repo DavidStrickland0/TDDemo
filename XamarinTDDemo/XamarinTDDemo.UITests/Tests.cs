@@ -24,11 +24,19 @@ namespace XamarinTDDemo.UITests
             app = AppInitializer.StartApp(platform);
         }
 
-        [Test]
+        //[Test]
         public void AppLaunches()
         {
             app.Screenshot("First screen.");
         }
+        [Test]
+        public void CalculatorFormLoads()
+        {
+            app.Repl();
+            app.WaitForElement(c => c.Class("PageRenderer").Id("CalculatorPage"));
+            Assert.Pass();
+        }
+
     }
 }
 
