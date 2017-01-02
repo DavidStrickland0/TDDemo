@@ -70,5 +70,11 @@ So take a look at the push history to see the incremental as we go from Napkin t
   - Once the code Finishes compiling the Code cd to XamarinTDDemo.CLI\bin\Debug
   - type XamarinTDDemo.CLI.exe
 
-# Note
-When I first started this TDDemo I intended to carry it on through and Drive the UI using Xamarins UI tests and potentially put it up in the Google App Store as a Beta. Unfortunately it looks like the Xamarin UI Test client still needs a bit of work so I just left it at the CLI.
+# Xamarin Forms UI Test
+After finishing the CLI interface I continued on and completed a basic Xamarin Forms interface to take a look at what its like to use Xamrin UI Tests for Test Drive UI Developement. The pushes for the UI were limited to 1 push per test as compared to the 2 pushes per test I did for the CLI implementation.
+
+The XamarinTDDUI.sln can be used to compile the application to run on Droid phones API version 15+. Compiling this solution however requires Xamarin to be installed in Visual Studios as well as the Android SDK along with a simulator toi run it if you dont have a Droid phone you can use. 
+
+The Xamarin UI tests require that not only the app be installed on the target device but a testing app as well. Thus the original TDDemo.CLI.sln was implemented as it can be compiled on most machines with the .Net Framework installed. It also demonstartes the basic ideas behind Test driven development.
+
+
