@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:XamarinTDDemo.UI.ViewModels"
              x:Class="XamarinTDDUI.Views.CalculatorPage"
              AutomationId="CalculatorPage"
   >
+  <ContentPage.BindingContext>
+    <viewModels:CalculatorViewModel/>
+  </ContentPage.BindingContext>
   <StackLayout>
     <Label Text="Enter the time you started \ Ended and what time the kids went to bed."/>
     <Entry Text="{Binding StartTime}" 
@@ -16,7 +20,12 @@
        AutomationId="FinishedTimeControl"
        Placeholder="Finished Time"/>
     <Button Text="Calculate" 
-       AutomationId="CaculateButton"/>
-    <Label Text="{Binding Total}"/>      
+       AutomationId="CaculateButton"
+       Command="{Binding ClickedCommand}"
+       IsEnabled="False" />
+    <Label Text="{Binding Total, Mode=TwoWay}"
+          AutomationId="CalculateResult"
+          HorizontalTextAlignment="Center" 
+          FontSize="Large"/>
   </StackLayout>
 </ContentPage>

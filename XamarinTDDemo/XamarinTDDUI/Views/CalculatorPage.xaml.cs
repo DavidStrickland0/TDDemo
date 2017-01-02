@@ -15,7 +15,7 @@ namespace XamarinTDDUI.Views
         public CalculatorPage()
         {
             InitializeComponent();
-            BindingContext = new CalculatorViewModel();
+            
         }
 
     }

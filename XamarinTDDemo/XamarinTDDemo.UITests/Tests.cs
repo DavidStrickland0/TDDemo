@@ -68,18 +68,22 @@ namespace XamarinTDDemo.UITests
         }
 
         [Test]
-        public void Caclulatetime()
+        public void CaclulateTime()
         {
             app.WaitForElement(c => c.Class("PageRenderer"));
             var finishedTimeControls = app.Query(c => c.Marked("FinishedTimeControl"));
             var bedTimeControls = app.Query(c => c.Marked("BedTimeControl"));
             var startTimeControls = app.Query(c => c.Marked("StartTimeControl"));
 
-            finishedTimeControls.First().Text = "test";
-            bedTimeControls.First().Text = "test";
-            startTimeControls.First().Text = "test";
+            app.EnterText("StartTimeControl", "5:00 pm");
+            app.EnterText("BedTimeControl", "9:00 pm");
+            app.EnterText("FinishedTimeControl", "4:00 am");
 
-            var calculateControls = app.Query(c => c.Marked("CaculateButton"));
+            app.Tap("CaculateButton");
+
+            var resultControls = app.Query(c => c.Marked("CalculateResult"));
+            string actual = resultControls.First().Text;
+            Assert.AreEqual("136", actual);
 
         }
 
