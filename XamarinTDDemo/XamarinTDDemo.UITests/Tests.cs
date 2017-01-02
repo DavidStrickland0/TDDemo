@@ -24,7 +24,7 @@ namespace XamarinTDDemo.UITests
             app = AppInitializer.StartApp(platform);
         }
 
-        //[Test]
+        [Test]
         public void AppLaunches()
         {
             app.Screenshot("First screen.");
@@ -32,11 +32,16 @@ namespace XamarinTDDemo.UITests
         [Test]
         public void CalculatorFormLoads()
         {
-            app.Repl();
-            app.WaitForElement(c => c.Class("PageRenderer").Id("CalculatorPage"));
+            app.WaitForElement(c => c.Class("PageRenderer"));
             Assert.Pass();
         }
-
+        [Test]
+        public void CalculatorHasStartTimeControl()
+        {
+            app.WaitForElement(c => c.Class("PageRenderer"));
+            var startTimeControls = app.Query(c=>c.Marked("StartTimeControl"));
+            Assert.IsTrue(startTimeControls!=null && startTimeControls.Count()>0);
+        }
     }
 }
 

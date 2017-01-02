@@ -4,5 +4,9 @@
              x:Class="XamarinTDDUI.Views.CalculatorPage"
              AutomationId="CalculatorPage"
   >
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" AutomationId="CalculatorMainTextLabel" />
+  <StackLayout>
+    <Entry Text="{Binding StartDate}" 
+           AutomationId="StartTimeControl" 
+           Placeholder="Start Time"/>
+  </StackLayout>
 </ContentPage>
