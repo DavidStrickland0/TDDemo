@@ -9,6 +9,8 @@ namespace XamarinTDDemo.UI.ViewModels
     public class CalculatorViewModel
     {
         public string MainText { get; set; } = "MainText";
-        public string StartTime { get; set; } = "4:00 pm";
+        public string StartTime { get; set; }
+        public string BedTime { get; set; }
+        public string FinishedTime { get; set; }
     }
 }

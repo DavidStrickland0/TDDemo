@@ -42,6 +42,47 @@ namespace XamarinTDDemo.UITests
             var startTimeControls = app.Query(c=>c.Marked("StartTimeControl"));
             Assert.IsTrue(startTimeControls!=null && startTimeControls.Count()>0);
         }
+
+        [Test]
+        public void CalculatorHasBedTimeControl()
+        {
+            app.WaitForElement(c => c.Class("PageRenderer"));
+            var bedTimeControls = app.Query(c => c.Marked("BedTimeControl"));
+            Assert.IsTrue(bedTimeControls != null && bedTimeControls.Count() > 0);
+        }
+
+        [Test]
+        public void CalculatorHasFinishedTimeControl()
+        {
+            app.WaitForElement(c => c.Class("PageRenderer"));
+            var finishedTimeControls = app.Query(c => c.Marked("FinishedTimeControl"));
+            Assert.IsTrue(finishedTimeControls != null && finishedTimeControls.Count() > 0);
+        }
+
+        [Test]
+        public void CalculatorHasCalculateControl()
+        {
+            app.WaitForElement(c => c.Class("PageRenderer"));
+            var calculateControls = app.Query(c => c.Marked("CaculateButton"));
+            Assert.IsTrue(calculateControls != null && calculateControls.Count() > 0);
+        }
+
+        [Test]
+        public void Caclulatetime()
+        {
+            app.WaitForElement(c => c.Class("PageRenderer"));
+            var finishedTimeControls = app.Query(c => c.Marked("FinishedTimeControl"));
+            var bedTimeControls = app.Query(c => c.Marked("BedTimeControl"));
+            var startTimeControls = app.Query(c => c.Marked("StartTimeControl"));
+
+            finishedTimeControls.First().Text = "test";
+            bedTimeControls.First().Text = "test";
+            startTimeControls.First().Text = "test";
+
+            var calculateControls = app.Query(c => c.Marked("CaculateButton"));
+
+        }
+
     }
 }
 

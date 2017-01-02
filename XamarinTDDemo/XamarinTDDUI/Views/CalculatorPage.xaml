@@ -5,8 +5,18 @@
              AutomationId="CalculatorPage"
   >
   <StackLayout>
-    <Entry Text="{Binding StartDate}" 
+    <Label Text="Enter the time you started \ Ended and what time the kids went to bed."/>
+    <Entry Text="{Binding StartTime}" 
            AutomationId="StartTimeControl" 
            Placeholder="Start Time"/>
+    <Entry Text="{Binding BedTime}"
+       AutomationId="BedTimeControl"
+       Placeholder="Bed Time"/>
+    <Entry Text="{Binding FinishedTime}"
+       AutomationId="FinishedTimeControl"
+       Placeholder="Finished Time"/>
+    <Button Text="Calculate" 
+       AutomationId="CaculateButton"/>
+    <Label Text="{Binding Total}"/>      
   </StackLayout>
 </ContentPage>
