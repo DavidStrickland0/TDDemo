@@ -78,4 +78,4 @@ The XamarinTDDUI.sln can be used to compile the application to run on Droid phon
 The Xamarin UI tests require that not only the app be installed on the target device but a testing app as well. Thus the original TDDemo.CLI.sln was implemented as it can be compiled on most machines with the .Net Framework installed. It also demonstartes the basic ideas behind Test driven development.
 
 # AdHoc APK Location
-https://github.com/DavidStrickland0/TDDemo/blob/master/XamarinTDDemo/XamarinTDDUI.apk
+https://github.com/DavidStrickland0/TDDemo/raw/master/XamarinTDDemo/XamarinTDDUI.apk
